@@ -1,0 +1,3 @@
+markdown: rdiscount
+pygments: true
+permalink: /post/:year/:month/:title.html
