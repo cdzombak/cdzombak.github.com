@@ -13,6 +13,7 @@
 	<title>{{ page.title }} - Chris Dzombak</title>
 	
 	<meta name="author" content="Chris Dzombak">
+	{% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
 	
 	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,17 +21,33 @@
 	<link rel="shortcut icon" href="/favicon.ico">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 	
+	<link rel="openid.server" href="http://chrisdzombak.net/openid/index.php">
+	<link rel="openid.delegate" href="http://chrisdzombak.net/openid/index.php">
+
+	<link rel="alternate" type="application/atom+xml" title="Blog posts Atom feed" href="http://feeds.feedburner.com/dzombak/WbCK">
+	
 	<link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
 	<!-- <link href='http://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'> -->
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Arvo:regular' rel='stylesheet' type='text/css'>
 	
 	<!-- CSS : implied media="all" -->
-	<link rel="stylesheet" href="http://chris.dzombak.name/css/style.css">
+	<link rel="stylesheet" href="/css/style.css">
 	
+	<!-- asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet -->
+	<script>
+		var _gaq = [['_setAccount', 'UA-6672483-1'], ['_trackPageview']];
+		(function(d, t) {
+		var g = d.createElement(t),
+			s = d.getElementsByTagName(t)[0];
+		g.async = true;
+		g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g, s);
+		})(document, 'script');
+	</script>
 	<!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
 	<!-- async google analytics won't affect performance up here. -->
-	<script src="http://chris.dzombak.name/js/libs/modernizr-1.6.min.js"></script>
+	<script src="/js/libs/modernizr-1.6.min.js"></script>
 </head>
 
 <body>
@@ -39,17 +56,17 @@
 	
 		<header class="primary-header">
 			<hgroup>
-				<h1 style="text-transform: none;"><a href="http://chris.dzombak.name">chris dzombak : OSS</a></h1>
+				<h1><a href="/">Chris Dzombak</a></h1>
 				<p id="bio">University of Michigan CS engineering student, photographer, theatre kid, music lover. 
 				Developer at <a href="http://nutshell.com">Nutshell</a> and photog for <a href="http://michigandaily.com">the Michigan Daily</a>.</p>
 			</hgroup>
 			<nav>
 				<ul>
-					<li><a href="http://chris.dzombak.name/">&laquo; Home/Recent</a></li>
-					<li><a href="http://chris.dzombak.name/blog">Blog</a></li>
-					<li><a href="http://chris.dzombak.name/engineering">Engineering</a></li>
-					<li><a href="http://cdzombak.github.com" rel="me">OSS</a></li>
-					<li><a href="http://chris.dzombak.name/journalism">Journalism</a></li>
+					<li><a href="/" title="Home/Recent">Home</a></li>
+					<li><a href="/blog">Blog</a></li>
+					<li><a href="/engineering" title="Experience &amp; Projects">Engineering</a></li>
+					<li><a href="/journalism">Journalism</a></li>
+					<li><a href="http://cdzombak.github.com" rel="me" title="OSS Software Projects">Code</a></li>
 					<li><a href="http://chrisdzombak.com" rel="me">Photography</a></li>
 				</ul>
 			</nav>
@@ -57,9 +74,11 @@
 		
 		{{ content }}
 		
+		{% include comments.html %}
+		
 		<footer>
-			<p>Site and content &copy; 2011 <a href="http://chris.dzombak.name">Chris Dzombak</a>.</p>
 			<p>Contact me at <a href="mailto:chris@chrisdzombak.com">chris@chrisdzombak.com</a>.</p>
+			<p>Site and content &copy; 2011 <a href="http://chris.dzombak.name">Chris Dzombak</a>.</p>
 		</footer>
 	
 	</div> <!--! end of #container -->
@@ -72,12 +91,26 @@
 	<script src="js/libs/dd_belatedpng.js"></script>
 	<script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
 	<![endif]-->
-	<script src="http://chris.dzombak.name/js/plugins.js"></script>
-	<script src="http://chris.dzombak.name/js/libs/jquery.tweet.js"></script>
-	<script src="http://chris.dzombak.name/js/libs/jquery.delicious-cdz.js"></script>
-	<script src="http://chris.dzombak.name/js/libs/last.fm.records.js"></script>
+	<script src="/js/plugins.js"></script>
+	<script src="/js/libs/jquery.tweet.js"></script>
+	<script src="/js/libs/jquery.delicious-cdz.js"></script>
+	<script src="/js/libs/last.fm.records.js"></script>
+	<script type="text/javascript" src="http://konami-js.googlecode.com/svn/trunk/konami.js"></script>
 	<script src='http://platform.twitter.com/anywhere.js?id=X0OHm1KFc0KB45PhSYC4bA&#038;v=1&#038;ver=3.0.4'></script>
-	<script src="http://chris.dzombak.name/js/script.js"></script>
-  
+	<script src="/js/script.js"></script>
+
+	<script type="text/javascript">
+		var _gauges = _gauges || [];
+		(function() {
+			var t   = document.createElement('script');
+			t.type  = 'text/javascript';
+			t.async = true;
+			t.id    = 'gauges-tracker';
+			t.setAttribute('data-site-id', '4e4afdfc613f5d1820000006');
+			t.src = '//secure.gaug.es/track.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(t, s);
+		})();
+	</script>
 </body>
 </html>
