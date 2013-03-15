@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>{{ page.title }} // Chris Dzombak</title>
+	<title>cdzombak@github // Chris Dzombak</title>
 
 	<meta name="author" content="Chris Dzombak">
-	{% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+	
 
 	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,7 @@
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body class="{{ page.bodyClass }}">
+<body class="">
 
 	<div id="container">
 
@@ -54,7 +54,14 @@
 			</nav>
 		</header>
 
-		{{ content }}
+		<section>
+			<header>
+                <h1><a href="https://github.com/cdzombak">cdzombak@github</a></h1>
+            </header>
+
+            <div id="metabrag" data-metabrag-username="cdzombak"></div>
+
+		</section>
 
 		<footer>
 			<p><a href="/contact">Contact me</a>.</p>
